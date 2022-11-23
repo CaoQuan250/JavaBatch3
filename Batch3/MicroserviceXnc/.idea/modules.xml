@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/MicroserviceXnc.iml" filepath="$PROJECT_DIR$/.idea/MicroserviceXnc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cam-xnc/cam-xnc.iml" filepath="$PROJECT_DIR$/cam-xnc/cam-xnc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xnc-service/xnc-service.iml" filepath="$PROJECT_DIR$/xnc-service/xnc-service.iml" />
+    </modules>
+  </component>
+</project>

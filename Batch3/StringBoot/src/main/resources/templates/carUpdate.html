@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <title>UPDATE CAR</title>
+</head>
+<body>
+<div class="container" style="margin-top: 10px;">
+    <div class="row"
+         style="border: 1px darkgrey solid; border-radius: 10px; width: 50%; margin: 0 auto; padding: 20px;">
+        <div class="col-sm-12">
+
+            <h2 class="myclass">Update Product</h2>
+
+            <form th:action="${ACTION}" th:object=${CARDTO} method="post"
+
+                  enctype="multipart/form-data">
+
+                <div class="form-group" hidden>
+
+                    <input type="text" th:field="*{id}" class="form-control" name="id"  placeholder="Enter id" id="id" value="" >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Choose Brand</label>
+
+                    <select th:field="*{brandId}" class="form-control" id="brandId" name="brandId">
+
+                        <option th:each="brand: ${BRAND}" th:value="${brand.id}" th:text="${brand.name}"></option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Model</label> <input type="text" th:field="*{model}" class="form-control" name="model" placeholder="Enter model" id="model" value="">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Seats</label>
+
+                    <div class="radio">
+
+                        <label class="checkbox-inline"> <input type="radio" th:field="*{seat}"
+                                                               name="seats" value="4" id="seat1">4
+                        </label>
+
+                        <label class="checkbox-inline"> <input type="radio" th:field="*{seat}"
+                                                               name="seats" checked="checked" value="5" id="seats2">5
+                        </label>
+
+                        <label class="checkbox-inline"> <input type="radio" th:field="*{seat}"
+                                                               name="seats" checked="checked" value="9" id="seats3">9
+                        </label>
+
+                        <label class="checkbox-inline"> <input type="radio" th:field="*{seat}"
+                                                               name="seats" checked="checked" value="17" id="seats4">17
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>MFG</label> <input type="text" th:field="*{mfg}"
+                                              class="form-control" name="mfg"
+                                              placeholder="Enter MFG" id="MFG" value="">
+                </div>
+
+                <div class="form-group">
+                    <label>Photo</label> <input type="file" th:field="*{photo}" class="form-control" name="photo" placeholder="Enter photo" id="photo">
+                </div>
+
+                <div class="form-group">
+                    <label>Fuel</label> <input type="text" th:field="*{fuel}" class="form-control" name="fuel" placeholder="Enter fuel" id="fuel" value="">
+                </div>
+
+                <div class="form-group">
+                    <label>Price per day</label> <input type="text" th:field="*{price}" class="form-control" name="price" placeholder="Enter price" id="price" value="">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+
+                <a class="btn btn-primary" href="/list">Cancel</a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>ADMIN CRUD CARS</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>LIST CARS</h2>
+    <p>
+        <a class="btn btn-primary" href="/add">ADD CAR</a>
+    </p>
+    <div>
+        <form th:action='@{/list}'>
+            Filter:
+            <label>
+                <select name="fuel">
+                    <option value="" disabled selected hidden>All</option>
+                    <option value="Gas">Gas</option>
+                </select>
+            </label>
+            &nbsp;
+            <label>
+                <select name="model">
+                    <option value="" disabled selected hidden>All</option>
+                    <option value="Seltos">Seltos</option>
+                </select>
+            </label>
+            &nbsp;
+            <input type="submit" value="Search" name="Search" />
+            &nbsp;
+            <input type="button" value="Clear" onclick="clearFilter()" />
+        </form>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Photo</th>
+            <th>Id</th>
+            <th>Brand</th>
+            <th>MFG</th>
+            <th>Model</th>
+            <th>Seat</th>
+            <th>Fuel</th>
+            <th>Price per day</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item: ${LIST_CAR}">
+            <td width="150">
+                <img alt="" th:src="@{'/image/'+${item.photo}}" width="124" height="70">
+            </td>
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.brand.name}"></td>
+            <td th:text="${item.mfg}"></td>
+            <td th:text="${item.model}"></td>
+            <td th:text="${item.seat}"></td>
+            <td th:text="${item.fuel}"></td>
+
+            <td width="130" th:text="${item.price}+' $'"></td>
+            <td width="150"><a class="btn btn-primary btn-sm"
+                   th:href="@{'/edit/'+${item.id}}">Edit</a> | <a
+                    class="btn btn-danger btn-sm"
+                    th:href="@{'/delete/'+${item.id}}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+    function clearFilter(){
+        window.location= "/list";
+    }
+</script>
+</body>
+</html>

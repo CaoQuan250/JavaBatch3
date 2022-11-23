@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>ADMIN CRUD CARS</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>ORDERS LIST</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Renter</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Car</th>
+            <th>Pick</th>
+            <th>Drop</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item: ${LIST_BOOK}">
+            <td th:text="${item.customer.name}"></td>
+            <td th:text="${item.customer.email}"></td>
+            <td th:text="${item.customer.age}"></td>
+            <td th:text="${item.startDate}"></td>
+            <td th:text="${item.endDate}"></td>
+            <td th:text="${item.car.brand.name}"></td>
+            <td th:text="${item.pickup.name}"></td>
+            <td th:text="${item.dropout.name}"></td>
+            <td th:text="${item.status}"></td>
+            <td width="150"><a class="btn btn-primary btn-sm"
+                               th:href="@{'/detail/order/'+${item.id}}">Detail</a> | <a
+                    class="btn btn-danger btn-sm"
+                    th:href="@{'/delete/order/'+${item.id}}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
